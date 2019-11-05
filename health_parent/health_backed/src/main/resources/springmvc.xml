@@ -7,7 +7,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/mvc
-						http://www.springframework.org/schema/mvc/spring-mvc.xsd
+						http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
 						http://code.alibabatech.com/schema/dubbo
 						http://code.alibabatech.com/schema/dubbo/dubbo.xsd
 						http://www.springframework.org/schema/context
