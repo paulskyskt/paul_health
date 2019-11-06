@@ -3,6 +3,8 @@ package com.paul.dao;
 import com.github.pagehelper.Page;
 import com.paul.pojo.CheckItem;
 
+import java.util.List;
+
 public interface CheckItemDao {
 
     /**
@@ -26,4 +28,5 @@ public interface CheckItemDao {
 
     void update(CheckItem checkItem);
 
+    List<CheckItem> findAll();
 }

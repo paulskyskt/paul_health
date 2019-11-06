@@ -285,15 +285,35 @@
                 },
                 //添加
                 handleAdd () {
+                    //alert(this.checkitemIds);
+                    axios.post("/checkgroup/add.do?checkitemIds="+this.checkitemIds,this.formData).then((response)=>{
+                        if(response.data.flag){
+                            this.$message.success(response.data.message);
+                        }else {
+                            this.$message.error(response.data.message);
+                        }
+                    }).finally(()=>{
+                        this.findPage();
+                    });
                 },
                 //分页查询
                 findPage() {
                 },
                 // 重置表单
                 resetForm() {
+                   this.formData = {};
                 },
                 // 弹出添加窗口
                 handleCreate() {
+                    this.dialogFormVisible = true;
+                    this.resetForm();
+                    axios.get("/checkitem/findAll.do").then((response)=>{
+                        if(response.data.flag){
+                            this.tableData = response.data.data;
+                        }else {
+                            this.$message.error(response.data.message);
+                        }
+                    });
                 },
                 // 弹出编辑窗口
                 handleUpdate(row) {

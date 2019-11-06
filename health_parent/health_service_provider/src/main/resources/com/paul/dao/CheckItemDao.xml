@@ -2,9 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paul.dao.CheckItemDao">
-        <insert id="add" parameterType="com.paul.pojo.CheckItem">
-            insert into t_checkitem(code,name,sex,age,price,type,remark,attention)values(#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
-        </insert>
+
+    <select id="findAll" resultType="com.paul.pojo.CheckItem">
+        select * from t_checkitem
+    </select>
+
+
+    <insert id="add" parameterType="com.paul.pojo.CheckItem">
+        insert into t_checkitem(code,name,sex,age,price,type,remark,attention)values(#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
+    </insert>
 
 
     <select id="selectByCondition" resultType="com.paul.pojo.CheckItem" parameterType="string">
