@@ -37,7 +37,7 @@ public class CheckItemController {
         return new Result(true,MessageConstant.ADD_CHECKITEM_SUCCESS);
     }
 
-    //新增检查项
+    //查询检查项
     @RequestMapping("/findPage.do")
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
 
@@ -55,6 +55,29 @@ public class CheckItemController {
             return new Result(false,MessageConstant.DELETE_CHECKITEM_FAIL);
         }
         return new Result(true,MessageConstant.DELETE_CHECKITEM_SUCCESS);
+    }
+
+    //查询一个检查项
+    @RequestMapping("/findById.do")
+    public Result findById(Integer id){
+        try{
+            CheckItem checkItem = checkItemService.findById(id);
+            return new Result(true,MessageConstant.QUERY_CHECKITEM_SUCCESS,checkItem);
+        }catch (RuntimeException e){
+            return new Result(false,MessageConstant.QUERY_CHECKITEM_FAIL);
+        }
+    }
+
+
+    //编辑检查项
+    @RequestMapping("/edit.do")
+    public Result edit(@RequestBody CheckItem checkItem){
+        try{
+            checkItemService.edit(checkItem);
+            return new Result(true,MessageConstant.EDIT_CHECKITEM_SUCCESS);
+        }catch (Exception e){
+            return new Result(false,MessageConstant.EDIT_CHECKITEM_FAIL);
+        }
     }
 
 

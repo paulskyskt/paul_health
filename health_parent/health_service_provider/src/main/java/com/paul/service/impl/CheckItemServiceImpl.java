@@ -70,5 +70,29 @@ public class CheckItemServiceImpl implements CheckItemService {
         checkItemDao.deleteById(id);
     }
 
+    /**
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    @Override
+    public CheckItem findById(Integer id) throws RuntimeException {
+        CheckItem checkItem = checkItemDao.findById(id);
+        //查询结果为空抛一个异常
+        if(checkItem == null){
+            throw new RuntimeException();
+        }
+        return checkItem;
+    }
+
+    /**
+     * 更新检查项
+     * @param checkItem
+     */
+    @Override
+    public void edit(CheckItem checkItem) {
+        checkItemDao.update(checkItem);
+    }
+
 
 }

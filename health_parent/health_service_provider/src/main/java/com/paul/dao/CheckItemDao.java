@@ -21,4 +21,9 @@ public interface CheckItemDao {
     public void deleteById(Integer id);
 
     public long findCountByCheckItemId(Integer checkItemId);
+
+    CheckItem findById(Integer id);
+
+    void update(CheckItem checkItem);
+
 }
