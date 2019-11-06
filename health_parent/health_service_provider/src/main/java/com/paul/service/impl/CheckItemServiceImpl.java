@@ -23,11 +23,20 @@ public class CheckItemServiceImpl implements CheckItemService {
     @Autowired
     private CheckItemDao checkItemDao;
 
+    /**
+     * 添加检查项
+     * @param checkItem
+     */
     @Override
     public void add(CheckItem checkItem) {
         checkItemDao.add(checkItem);
     }
 
+    /**
+     * 分页/条件 查询检查项
+     * @param queryPageBean
+     * @return
+     */
     @Override
     public PageResult pageQuery(QueryPageBean queryPageBean) {
 
@@ -45,6 +54,20 @@ public class CheckItemServiceImpl implements CheckItemService {
         List<CheckItem> rows = checkItems.getResult();
 
         return new PageResult(total,rows);
+    }
+
+    /**
+     * 删除检查项
+     * @param id
+     */
+    @Override
+    public void delete(Integer id) throws RuntimeException{
+        //查询当前检查项是否和检查组关联
+        long count = checkItemDao.findCountByCheckItemId(id);
+        if(count > 0){
+            throw new RuntimeException("当前检查项被引用，不能删除");
+        }
+        checkItemDao.deleteById(id);
     }
 
 
