@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="897cb09c-c1bf-434c-9437-a1da4c86660e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="897cb09c-c1bf-434c-9437-a1da4c86660e" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/health_parent/target/" />
     <ignored path="$PROJECT_DIR$/health_parent/health_common/target/" />
@@ -30,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/health_parent/health_service_provider/src/main/java/com/paul/service/impl/CheckItemServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
+            <state relative-caret-position="1700">
               <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -70,7 +68,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/health_parent/health_common/src/main/java/com/paul/pojo/CheckItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="160">
               <caret line="11" column="22" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="22" />
             </state>
           </provider>
@@ -97,14 +95,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/health_parent/health_backed/src/main/webapp/pages/checkitem.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1741">
-              <caret line="243" column="68" lean-forward="true" selection-start-line="243" selection-start-column="68" selection-end-line="243" selection-end-column="68" />
+            <state relative-caret-position="179">
+              <caret line="343" column="39" lean-forward="true" selection-start-line="343" selection-start-column="39" selection-end-line="343" selection-end-column="39" />
               <folding>
                 <element signature="e#15638#15790#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/health_parent/health_backed/src/main/webapp/pages/checkgroup.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="39">
+              <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -209,33 +216,6 @@
     <option name="jreName" value="1.8" />
     <option name="skipTests" value="true" />
     <option name="vmOptions" value="-DarchetypeCatalog=internal" />
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_0.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_2.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_github_virtuald_curvesapi_1_03.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_6_2.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_qiniu_happy_dns_java_0_1_4.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_qiniu_qiniu_java_sdk_7_2_0.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_3_3_1.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_8_0.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_3_14.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_3_14.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_poi_poi_ooxml_schemas_3_14.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_xmlbeans_xmlbeans_2_6_0.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_acl_5_0_5_RELEASE.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_5_0_5_RELEASE.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_5_0_5_RELEASE.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_taglibs_5_0_5_RELEASE.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_5_0_5_RELEASE.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__stax_stax_api_1_0_1.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_0_9_5.xml" />
-        <option value="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_4_1_4.xml" />
-      </list>
-    </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="48" />
@@ -592,11 +572,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\JavaWork\itcast_health\health_parent\health_backed\src\main\webapp\pages" />
       <recent name="E:\JavaWork\itcast_health\health_parent\health_backed\src\main\resources" />
       <recent name="E:\JavaWork\itcast_health\health_parent\health_backed\src\main\webapp" />
       <recent name="E:\JavaWork\itcast_health\health_parent\health_common\src\main\java\com\paul\entity" />
       <recent name="E:\JavaWork\itcast_health\health_parent\health_common\src\main\java\com\paul\constant" />
-      <recent name="E:\JavaWork\itcast_health\health_parent\health_common\src\main\java\com\paul\pojo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -611,7 +591,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.health_service_provider [tomcat7:run]">
+  <component name="RunManager" selected="Maven.health_backed [tomcat7:run]">
     <configuration name="health_backed [tomcat7:run]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -664,8 +644,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Maven.health_service_provider [tomcat7:run]" />
         <item itemvalue="Maven.health_backed [tomcat7:run]" />
+        <item itemvalue="Maven.health_service_provider [tomcat7:run]" />
         <item itemvalue="Maven.health_backed [tomcat7:run]" />
         <item itemvalue="Maven.health_backed [tomcat7:run]" />
       </list>
@@ -685,7 +665,7 @@
       <workItem from="1572936782116" duration="6713000" />
       <workItem from="1572950191464" duration="11711000" />
       <workItem from="1572965660874" duration="127000" />
-      <workItem from="1573000440493" duration="14185000" />
+      <workItem from="1573000440493" duration="14645000" />
     </task>
     <task id="LOCAL-00001" summary="初始项目环境搭建_1">
       <created>1572937670188</created>
@@ -771,17 +751,24 @@
       <option name="project" value="LOCAL" />
       <updated>1573019792811</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="检查组页面">
+      <created>1573021365444</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1573021365444</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36025000" />
+    <option name="totallyTimeSpent" value="36485000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1563" height="845" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24518272" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24518272" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -831,7 +818,8 @@
     <MESSAGE value="删除检查项后台代码完成" />
     <MESSAGE value="编辑功能后台代码完成" />
     <MESSAGE value="编辑功能前台代码完成，功能完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="编辑功能前台代码完成，功能完成" />
+    <MESSAGE value="检查组页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="检查组页面" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1023,27 +1011,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/health_parent/health_common/src/main/java/com/paul/pojo/CheckItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/health_parent/health_service_provider/src/main/resources/com/paul/dao/CheckItemDao.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="56" column="14" lean-forward="true" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/health_parent/health_interface/src/main/java/com/paul/service/CheckItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1057,20 +1028,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/health_parent/health_service_provider/src/main/java/com/paul/service/impl/CheckItemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#800#801#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-            <element signature="e#2317#2318#0" expanded="true" />
-            <element signature="e#2347#2348#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/health_parent/health_backed/src/main/java/com/paul/controller/CheckItemController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -1080,10 +1037,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/health_parent/health_backed/src/main/webapp/pages/checkitem.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1741">
-          <caret line="243" column="68" lean-forward="true" selection-start-line="243" selection-start-column="68" selection-end-line="243" selection-end-column="68" />
+        <state relative-caret-position="179">
+          <caret line="343" column="39" lean-forward="true" selection-start-line="343" selection-start-column="39" selection-end-line="343" selection-end-column="39" />
           <folding>
             <element signature="e#15638#15790#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/health_parent/health_backed/src/main/webapp/pages/checkgroup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="6" column="16" lean-forward="true" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/health_parent/health_interface/src/main/java/com/paul/service/CheckItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/health_parent/health_common/src/main/java/com/paul/pojo/CheckItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/health_parent/health_service_provider/src/main/java/com/paul/service/impl/CheckItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="85" column="5" lean-forward="true" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+            <element signature="e#2317#2318#0" expanded="true" />
+            <element signature="e#2347#2348#0" expanded="true" />
           </folding>
         </state>
       </provider>
