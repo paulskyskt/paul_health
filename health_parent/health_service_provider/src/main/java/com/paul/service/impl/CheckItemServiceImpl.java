@@ -56,7 +56,7 @@ public class CheckItemServiceImpl implements CheckItemService {
 
         //分页
         PageHelper.startPage(currentPage,pageSize);
-        Page<CheckItem> checkItems = checkItemDao.selectByCondition(queryString);
+         Page<CheckItem> checkItems = checkItemDao.selectByCondition(queryString);
 
         //获取总记录数和数据封装成对象
         long total = checkItems.getTotal();

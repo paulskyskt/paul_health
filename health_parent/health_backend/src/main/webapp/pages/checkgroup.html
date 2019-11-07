@@ -287,6 +287,7 @@
                 handleAdd () {
                     //alert(this.checkitemIds);
                     axios.post("/checkgroup/add.do?checkitemIds="+this.checkitemIds,this.formData).then((response)=>{
+                        this.dialogFormVisible = false;
                         if(response.data.flag){
                             this.$message.success(response.data.message);
                         }else {
