@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.paul.dao.CheckGroupDao;
 import com.paul.dao.CheckItemDao;
+import com.paul.pojo.CheckGroup;
 import com.paul.pojo.CheckItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,13 @@ public class CheckItemTest {
         List<CheckItem> result = items.getResult();
         for (CheckItem checkItem : result) {
             System.out.println(checkItem);
+        }
+    }
+    @Test
+    public void test2(){
+        Page<CheckGroup> checkGroups = checkGroupDao.selectByCondition("一");
+        for (CheckGroup checkGroup : checkGroups) {
+            System.out.println(checkGroup);
         }
     }
 

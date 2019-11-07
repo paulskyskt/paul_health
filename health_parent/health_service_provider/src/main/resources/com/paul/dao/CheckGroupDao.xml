@@ -14,4 +14,11 @@
     <insert id="setCheckGroupAndCheckItem" parameterType="map">
         INSERT INTO t_checkgroup_checkitem(checkgroup_id,checkitem_id) VALUES (#{checkGroupId},#{checkitemId})
     </insert>
+
+    <select id="selectByCondition" parameterType="string" resultType="com.paul.pojo.CheckGroup">
+        select * from t_checkgroup
+       <if test="value !=null and value.length > 0">
+           where name like CONCAT(CONCAT('%',#{value},'%')) or code like CONCAT(CONCAT('%',#{value},'%'))
+       </if>
+    </select>
 </mapper>
