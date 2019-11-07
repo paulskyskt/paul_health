@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -21,8 +22,8 @@ public class CheckItemTest {
     @Autowired
     private CheckItemDao checkItemDao;
 
-    @Autowired
-    private CheckGroupDao checkGroupDao;
+   @Autowired
+   private CheckGroupDao checkGroupDao;
 
     @Test
     public void test1(){
@@ -34,10 +35,17 @@ public class CheckItemTest {
     }
     @Test
     public void test2(){
-        Page<CheckGroup> checkGroups = checkGroupDao.selectByCondition("一");
-        for (CheckGroup checkGroup : checkGroups) {
-            System.out.println(checkGroup);
+        List<Integer> checkItemIdsByCheckGroupId = checkGroupDao.findCheckItemIdsByCheckGroupId(10);
+        for (Integer integer : checkItemIdsByCheckGroupId) {
+            System.out.println(integer);
         }
     }
 
+    @Test
+    public void test3(){
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("checkGroupId",18);
+        map.put("checkItemId",33);
+        checkGroupDao.updateCheckItemForCheckGroup(map);
+    }
 }

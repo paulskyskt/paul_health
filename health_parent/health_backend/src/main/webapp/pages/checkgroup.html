@@ -282,6 +282,19 @@
             methods: {
                 //编辑
                 handleEdit() {
+                    axios.post("/checkgroup/edit.do?checkitemIds="+this.checkitemIds,this.formData).then((res)=>{
+                       //
+                        this.dialogFormVisible4Edit = false;
+                        if(res.data.flag){
+                            //成功
+                            this.$message.success(res.data.message);
+                        }else {
+                            this.$message.error(res.data.message);
+                        }
+                    }).finally(()=>{
+                        this.findPage();
+                    });
+
                 },
                 //添加
                 handleAdd () {
@@ -330,6 +343,37 @@
                 },
                 // 弹出编辑窗口
                 handleUpdate(row) {
+
+                    //先显示数据 查询出第一个框的数据 检查组的信息
+                    axios.get("/checkgroup/findById.do?id="+row.id).then((res)=>{
+                        if(res.data.flag){
+                            this.dialogFormVisible4Edit = true;
+                            //默认选中第一个标签页
+                            this.activeName='first';
+                            this.formData = res.data.data;
+                            //查询出第二个框中数据 所有检查项
+                            axios.get("/checkitem/findAll.do").then((res)=>{
+                                if(res.data.flag){
+                                    this.tableData = res.data.data;
+                                    //查询出当前检查组相关联的检查项信息勾中
+                                    axios.get("/checkgroup/findCheckItemIdsByCheckGroupId.do?id="+row.id).then((res)=>{
+                                        if(res.data.flag){
+                                            this.checkitemIds = res.data.data;
+                                        }else {
+                                            this.$message.error(res.data.message);
+                                        }
+                                    })
+
+                                }else {
+                                    this.$message.error(res.data.message);
+                                }
+                            })
+
+                        }else {
+                            this.$message.error("获取数据失败，请刷新当前页面");
+                        }
+
+                    })
 
                 },
                 //切换页码

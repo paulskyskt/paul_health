@@ -21,4 +21,46 @@
            where name like CONCAT(CONCAT('%',#{value},'%')) or code like CONCAT(CONCAT('%',#{value},'%'))
        </if>
     </select>
+
+    <select id="findById" resultType="com.paul.pojo.CheckGroup" parameterType="int">
+       SELECT * FROM t_checkgroup WHERE id = #{id}
+    </select>
+
+   <select id="findCheckItemIdsByCheckGroupId" resultType="int" parameterType="int">
+       SELECT id FROM  t_checkitem t1,t_checkgroup_checkitem t2 WHERE t1.`id`=t2.`checkitem_id` AND t2.`checkgroup_id` = #{id}
+   </select>
+
+
+    <delete id="deleteAssociation" parameterType="int">
+        DELETE  FROM t_checkgroup_checkitem WHERE checkgroup_id = #{id}
+    </delete>
+
+    <insert id="updateCheckItemForCheckGroup" parameterType="map">
+        insert into t_checkgroup_checkitem(checkgroup_id,checkitem_id) values (#{checkGroupId},#{checkItemId})
+    </insert>
+
+    <update id="update" parameterType="com.paul.pojo.CheckGroup">
+        update t_checkgroup
+        <set>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="helpCode != null">
+                helpCode = #{helpCode},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+            <if test="attention != null">
+                attention = #{attention},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

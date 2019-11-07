@@ -29,4 +29,6 @@ public interface CheckItemDao {
     void update(CheckItem checkItem);
 
     List<CheckItem> findAll();
+
+
 }
