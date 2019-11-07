@@ -330,6 +330,7 @@
                 },
                 // 弹出编辑窗口
                 handleUpdate(row) {
+
                 },
                 //切换页码
                 handleCurrentChange(currentPage) {
@@ -339,8 +340,15 @@
                 // 删除
                 handleDelete(row) {
                     this.$confirm("确认删除当前选中记录吗？","提示",{type:'warning'}).then(()=>{
-                        axios.get("/checkitem/delete.do?id="+row.id).then((res)=>{
-
+                        axios.get("/checkgroup/delete.do?id="+row.id).then((res)=>{
+                            if(res.data.flag){
+                                //删除成功
+                                this.$message.success(res.data.message);
+                                this.findPage();
+                            }else {
+                                //失败
+                                this.$message.error(res.data.message);
+                            }
                         })
                     })
                 }

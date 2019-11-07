@@ -11,3 +11,4 @@ public interface CheckGroupService {
     PageResult findPage(QueryPageBean queryPageBean);
 }
 
+
