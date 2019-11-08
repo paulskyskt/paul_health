@@ -1,11 +1,9 @@
 package com.paul.daotest;
 
 import com.github.pagehelper.Page;
-import com.github.pagehelper.PageInfo;
 import com.paul.dao.CheckGroupDao;
 import com.paul.dao.CheckItemDao;
 import com.paul.dao.SetmealDao;
-import com.paul.pojo.CheckGroup;
 import com.paul.pojo.CheckItem;
 import com.paul.pojo.Setmeal;
 import org.junit.Test;
@@ -29,6 +27,23 @@ public class CheckItemTest {
 
    @Autowired
    private SetmealDao setmealDao;
+
+    @Test
+    public void test6(){
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("checkgroupId",5);
+        map.put("setmealId",15);
+        setmealDao.setSetmealAndCheckgroup(map);
+    }
+
+   @Test
+   public void test5(){
+       Setmeal setmeal = new Setmeal();
+        setmeal.setAge("20-29");
+       setmealDao.add(setmeal);
+       Integer id = setmeal.getId();
+       System.out.println(id);
+   }
 
     @Test
     public void test1(){

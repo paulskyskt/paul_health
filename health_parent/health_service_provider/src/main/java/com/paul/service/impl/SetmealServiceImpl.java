@@ -11,6 +11,7 @@ import com.paul.service.SetmealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service(interfaceClass = SetmealService.class)
@@ -35,5 +36,18 @@ public class SetmealServiceImpl implements SetmealService {
         long total = setmeals.getTotal();
 
         return new PageResult(total,list);
+    }
+
+    @Override
+    public void add(Setmeal setmeal, Integer[] checkgroupIds) {
+        setmealDao.add(setmeal);
+        if(checkgroupIds !=null && checkgroupIds.length > 0){
+            for (Integer checkgroupId : checkgroupIds) {
+                HashMap<String, Integer> map = new HashMap<>();
+                map.put("checkgroupId",checkgroupId);
+                map.put("setmealId",setmeal.getId());
+                setmealDao.setSetmealAndCheckgroup(map);
+            }
+        }
     }
 }
