@@ -24,6 +24,8 @@ public interface CheckGroupDao {
     void updateCheckItemForCheckGroup(HashMap<String, Integer> map);
 
     void update(CheckGroup checkGroup);
+
+    List<CheckGroup> findAll();
 }
 
 

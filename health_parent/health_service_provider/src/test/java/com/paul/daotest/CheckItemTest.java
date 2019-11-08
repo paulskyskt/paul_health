@@ -4,8 +4,10 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.paul.dao.CheckGroupDao;
 import com.paul.dao.CheckItemDao;
+import com.paul.dao.SetmealDao;
 import com.paul.pojo.CheckGroup;
 import com.paul.pojo.CheckItem;
+import com.paul.pojo.Setmeal;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class CheckItemTest {
 
    @Autowired
    private CheckGroupDao checkGroupDao;
+
+   @Autowired
+   private SetmealDao setmealDao;
 
     @Test
     public void test1(){
@@ -47,5 +52,14 @@ public class CheckItemTest {
         map.put("checkGroupId",18);
         map.put("checkItemId",33);
         checkGroupDao.updateCheckItemForCheckGroup(map);
+    }
+
+    @Test
+    public void test4(){
+        Page<Setmeal> page = setmealDao.findPage("男");
+        List<Setmeal> result = page.getResult();
+        for (Setmeal setmeal : result) {
+            System.out.println(setmeal);
+        }
     }
 }
