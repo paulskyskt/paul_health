@@ -59,7 +59,7 @@ public class SetmealServiceImpl implements SetmealService {
             }
         }
 
-        //jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_DB_RESOURCES,setmeal.getImg());
+        jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_DB_RESOURCES,setmeal.getImg());
 
     }
 }
