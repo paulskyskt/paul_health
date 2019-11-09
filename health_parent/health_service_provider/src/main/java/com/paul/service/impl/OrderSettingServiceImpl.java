@@ -35,7 +35,7 @@ public class OrderSettingServiceImpl implements OrderSettingService {
     @Override
     public List<Map> getOrderSettingByMonth(String date) {
         //传入的格式  2019-11
-        //返回的格式 { date: 1, number: 120, reservations: 1 },
+        //返回的格式 [{"date":10,"number":666,"reservations":0},{"date":5,"number":300,"reservations":0},{date=7, number=300, reservations=0}]
 
         String begin = date+"-1";//2019-11-1
         String end = date + "-31";//2019-11-31
@@ -62,7 +62,7 @@ public class OrderSettingServiceImpl implements OrderSettingService {
             result.add(hashMap);
 
         }
-        System.out.println(result);
+
         return result;
     }
 

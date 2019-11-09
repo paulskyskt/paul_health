@@ -8,6 +8,7 @@ import redis.clients.jedis.JedisPool;
 import java.util.Set;
 
 public class ClearImgJob {
+
     @Autowired
     private JedisPool jedisPool;
 
