@@ -19,4 +19,8 @@
     <insert id="setSetmealAndCheckgroup" parameterType="map">
         insert into t_setmeal_checkgroup (setmeal_id,checkgroup_id)values (#{setmealId},#{checkgroupId})
     </insert>
+
+    <select id="findAll" resultType="com.paul.pojo.Setmeal">
+        select * from t_setmeal
+    </select>
 </mapper>

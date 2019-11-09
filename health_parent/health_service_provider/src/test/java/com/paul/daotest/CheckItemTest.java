@@ -29,6 +29,14 @@ public class CheckItemTest {
    private SetmealDao setmealDao;
 
     @Test
+    public void test7(){
+        List<Setmeal> all = setmealDao.findAll();
+        for (Setmeal setmeal : all) {
+            System.out.println(setmeal);
+        }
+    }
+
+    @Test
     public void test6(){
         HashMap<String, Integer> map = new HashMap<>();
         map.put("checkgroupId",5);

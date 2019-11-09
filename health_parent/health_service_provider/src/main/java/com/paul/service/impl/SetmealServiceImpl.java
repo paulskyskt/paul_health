@@ -62,4 +62,9 @@ public class SetmealServiceImpl implements SetmealService {
         jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_DB_RESOURCES,setmeal.getImg());
 
     }
+
+    @Override
+    public List<Setmeal> findAll() {
+        return setmealDao.findAll();
+    }
 }
