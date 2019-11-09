@@ -62,4 +62,15 @@ public class OrderSettingController {
             return new Result(false, MessageConstant.GET_ORDERSETTING_FAIL);
         }
     }
+
+    @RequestMapping("/editNumberByDate.do")
+    public Result editNumberByDate (@RequestBody OrderSetting orderSetting){
+        try{
+            orderSettingService.editNumberByDate(orderSetting);
+            return new Result(true,MessageConstant.ORDERSETTING_SUCCESS);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Result(false, MessageConstant.ORDERSETTING_FAIL);
+        }
+    }
 }
