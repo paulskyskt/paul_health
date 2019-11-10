@@ -18,4 +18,13 @@
     <select id="getOrderSettingByMonth" parameterType="map" resultType="com.paul.pojo.OrderSetting">
         SELECT * FROM t_ordersetting WHERE orderDate BETWEEN #{begin} AND #{end}
     </select>
+
+
+    <select id="findByOrderDate" parameterType="java.util.Date" resultType="com.paul.pojo.OrderSetting">
+        select * from t_ordersetting where orderDate = #{orderDate}
+    </select>
+
+    <update id="editReservationsByOrderDate" parameterType="com.paul.pojo.OrderSetting">
+        update t_ordersetting set reservations = #{reservations} where orderDate = #{orderDate}
+    </update>
 </mapper>

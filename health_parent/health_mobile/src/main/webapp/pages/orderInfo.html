@@ -33,7 +33,7 @@
             <div class="contentBox">
                 <div class="card">
                     <div class="">
-                        <img :src="'http://pqjroc654.bkt.clouddn.com/'+setmeal.img" width="100%" height="100%" />
+                        <img :src="'http://q0pejaurx.bkt.clouddn.com/'+setmeal.img" width="100%" height="100%" />
                     </div>
                     <div class="project-text">
                         <h4 class="tit">{{setmeal.name}}</h4>
@@ -113,12 +113,45 @@
                 methods:{
                     //发送验证码
                     sendValidateCode(){
+                        var telephone = this.orderInfo.telephone;
+                        if(!checkTelephone(telephone)){
+                            this.$message.error("请输入正确手机号");
+                            return false;
+                        }
+                        //倒计时30秒
+                        validateCodeButton=$("#validateCodeButton")[0];
+                        clock=window.setInterval(doLoop,1000);//一秒执行一次
+                        //
+                        axios.post("/validateCode/send4Order.do?telephone="+telephone).then((res)=>{
+                           if(!res.data.flag){
+                               this.message.error("验证码发送失败，请检查手机号输入是否正确");
+                           }
+
+                        });
+
                     },
                     //提交预约
                     submitOrder(){
+                        //身份证校验
+                        if(!checkIdCard(this.orderInfo.idCard)){
+                            this.$message.error("身份证输入有误");
+                            return false;
+                        }
+                        //预约请求
+                        axios.post("/order/submit.do",this.orderInfo).then((res)=>{
+                            if(res.data.flag){
+                                //跳转页面
+                                window.location.href = "orderSuccess.html?orderId="+res.data.data;
+                            }else {
+                                this.$message.error(res.data.message);
+                            }
+                        });
                     }
                 },
                 mounted(){
+                    axios.post("/setmeal/findById.do?id="+id).then((res)=>{
+                        this.setmeal = res.data.data;
+                    });
                 }
             });
         </script>
