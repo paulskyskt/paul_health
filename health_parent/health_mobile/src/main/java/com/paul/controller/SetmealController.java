@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/setmeal")
 public class SetmealController {
 
-
     @Reference
     private SetmealService setmealService;
 
@@ -27,6 +26,17 @@ public class SetmealController {
         }catch (Exception e){
             e.printStackTrace();
             return new Result(false, MessageConstant.GET_SETMEAL_LIST_FAIL);
+        }
+    }
+
+    @RequestMapping("/findById.do")
+    public Result findById(Integer id){
+        try{
+            Setmeal setmeal = setmealService.findById(id);
+            return new Result(true,MessageConstant.QUERY_CHECKGROUP_SUCCESS,setmeal);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Result(false, MessageConstant.QUERY_CHECKGROUP_FAIL);
         }
     }
 

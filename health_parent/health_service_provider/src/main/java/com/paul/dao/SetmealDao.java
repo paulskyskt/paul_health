@@ -16,7 +16,10 @@ public interface SetmealDao {
     void setSetmealAndCheckgroup(HashMap<String, Integer> map);
 
     List<Setmeal> findAll();
+
+    Setmeal findById(Integer id);
 }
+
 
 
 

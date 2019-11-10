@@ -67,4 +67,9 @@
     <select id="findAll" resultType="com.paul.pojo.CheckGroup">
         select * from t_checkgroup
     </select>
+
+
+    <select id="findCheckGroupById" resultType="com.paul.pojo.CheckGroup" parameterType="int">
+        SELECT * FROM t_checkgroup WHERE id IN (SELECT checkgroup_id FROM t_setmeal_checkgroup WHERE setmeal_id = #{id})
+    </select>
 </mapper>

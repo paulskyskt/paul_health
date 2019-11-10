@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.paul.dao.CheckGroupDao;
 import com.paul.dao.CheckItemDao;
 import com.paul.dao.SetmealDao;
+import com.paul.pojo.CheckGroup;
 import com.paul.pojo.CheckItem;
 import com.paul.pojo.Setmeal;
 import org.junit.Test;
@@ -27,6 +28,26 @@ public class CheckItemTest {
 
    @Autowired
    private SetmealDao setmealDao;
+
+
+
+    @Test
+    public void test9(){
+        Setmeal setmeal = setmealDao.findById(12);
+        List<CheckGroup> checkGroups = setmeal.getCheckGroups();
+        for (CheckGroup checkGroup : checkGroups) {
+            System.out.println(checkGroup);
+        }
+    }
+
+    @Test
+    public void test8(){
+        List<CheckGroup> checkGroupById = checkGroupDao.findCheckGroupById(12);
+        for (CheckGroup checkGroup : checkGroupById) {
+            System.out.println(checkGroup);
+        }
+    }
+
 
     @Test
     public void test7(){

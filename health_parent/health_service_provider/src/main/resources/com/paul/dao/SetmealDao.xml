@@ -23,4 +23,21 @@
     <select id="findAll" resultType="com.paul.pojo.Setmeal">
         select * from t_setmeal
     </select>
+
+
+    <resultMap id="findByIdResultMap" type="com.paul.pojo.Setmeal">
+       <id column="" property=""></id>
+        <result property="name" column="name"></result>
+        <result property="code" column="code"></result>
+        <result property="helpCode" column="helpCode"></result>
+        <result property="sex" column="sex"></result>
+        <result property="age" column="age"></result>
+        <result property="price" column="price"></result>
+        <result property="remark" column="remark"></result>
+        <result property="img" column="img"></result>
+        <collection property="checkGroups" column="id" select="com.paul.dao.CheckGroupDao.findCheckGroupById"></collection>
+    </resultMap>
+    <select id="findById" parameterType="int" resultMap="findByIdResultMap">
+        select * from t_setmeal where id  = #{id}
+    </select>
 </mapper>

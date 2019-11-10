@@ -26,6 +26,8 @@ public interface CheckGroupDao {
     void update(CheckGroup checkGroup);
 
     List<CheckGroup> findAll();
+
+    List<CheckGroup> findCheckGroupById(Integer id);
 }
 
 
