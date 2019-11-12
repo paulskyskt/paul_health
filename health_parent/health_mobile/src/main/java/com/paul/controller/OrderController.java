@@ -36,9 +36,14 @@ public class OrderController {
         //获取传入手机号
         String telephone = (String) map.get("telephone");
         //从缓存中获取对应验证码
-        String sys_code = jedisPool.getResource().get(telephone + RedisMessageConstant.SENDTYPE_ORDER);
+        //String sys_code = jedisPool.getResource().get(telephone + RedisMessageConstant.SENDTYPE_ORDER);
         //获取传入验证码
         String code = (String) map.get("validateCode");
+
+        //测试用
+        String sys_code="0000";
+        //测试用
+
         //判断
         if ( sys_code == null || !sys_code.equals(code) ) {
             return new Result(false, MessageConstant.VALIDATECODE_ERROR);
@@ -67,4 +72,15 @@ public class OrderController {
         return result;
     }
 
+
+    @RequestMapping("/findById.do")
+    public Result findById(Integer id){
+        try{
+            Map map = orderService.findById(id);
+            return new Result(true,MessageConstant.QUERY_CHECKGROUP_SUCCESS,map);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new Result(false,MessageConstant.QUERY_CHECKGROUP_FAIL);
+        }
+    }
 }

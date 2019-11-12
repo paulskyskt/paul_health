@@ -34,4 +34,8 @@
         </selectKey>
         insert into t_order (member_id,orderDate,orderType,orderStatus,setmeal_id) values (#{memberId},#{orderDate},#{orderType},#{orderStatus},#{setmealId})
     </insert>
+
+   <select id="findById4Detai" parameterType="int" resultType="map">
+        select m.name member,s.name setmeal,o.orderDate orderDate,o.orderType orderType from t_order o,t_member m,t_setmeal s where o.member_id = m.id and o.setmeal_id = s.id and o.id=#{id}
+   </select>
 </mapper>

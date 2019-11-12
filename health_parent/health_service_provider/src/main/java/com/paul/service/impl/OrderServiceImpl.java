@@ -89,4 +89,9 @@ public class OrderServiceImpl implements OrderService {
         return new Result(true,MessageConstant.ORDER_SUCCESS,order.getId());
 
     }
+
+    @Override
+    public Map findById(Integer id) {
+        return orderDao.findById4Detai(id);
+    }
 }
