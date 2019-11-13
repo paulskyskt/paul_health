@@ -66,7 +66,12 @@
                                 <el-button type="primary" size="mini" @click="Permission(scope.row)">权限</el-button>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="menu" label="角色关联菜单" align="center"></el-table-column>
+                        <el-table-column prop="menus" label="角色关联菜单" align="center"></el-table-column>
+                        <el-table-column label="角色关联用户" align="center">
+                            <template slot-scope="scope">
+                                <el-button type="primary" size="mini" @click="user(scope.row)">角色关联用户</el-button>
+                            </template>
+                        </el-table-column>
                         <el-table-column label="操作" align="center">
                             <template slot-scope="scope">
                                 <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">编辑</el-button>
@@ -85,33 +90,28 @@
                         </el-pagination>
                     </div>
 
-
-
-                    <!-- 权限的查看-->
-                    <!-- 编辑标签弹层 -->
+                    <!--角色关联用户-->
                     <div class="add-form">
-                        <el-dialog title="编辑检查组" :visible.sync="dialogFormVisible4Edit">
+                        <el-dialog title="对应权限" :visible.sync="dialogFormVisible4user">
                             <template>
                                 <el-tabs v-model="activeName" type="card">
-                                    <el-tab-pane label="检查项信息" name="second">
+                                    <el-tab-pane label="用户信息" name="first">
                                         <div class="checkScrol">
                                             <table class="datatable">
                                                 <thead>
                                                 <tr>
-                                                    <th>选择</th>
-                                                    <th>项目编码</th>
-                                                    <th>项目名称</th>
-                                                    <th>项目说明</th>
+                                                    <th>用户名</th>
+                                                    <th>性别</th>
+                                                    <th>电话</th>
+                                                    <th>生日</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr v-for="c in tableData">
-                                                    <td>
-                                                        <input :id="c.id" v-model="checkitemIds" type="checkbox" :value="c.id">
-                                                    </td>
-                                                    <td><label :for="c.id">{{c.code}}</label></td>
-                                                    <td><label :for="c.id">{{c.name}}</label></td>
-                                                    <td><label :for="c.id">{{c.remark}}</label></td>
+                                                <tr v-for="c in userData">
+                                                    <td><label :for="c.id">{{c.users.username}}</label></td>
+                                                    <td><label :for="c.id">{{c.gender}}</label></td>
+                                                    <td><label :for="c.id">{{c.telephone}}</label></td>
+                                                    <td><label :for="c.id">{{c.birthday}}</label></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -119,10 +119,39 @@
                                     </el-tab-pane>
                                 </el-tabs>
                             </template>
-                            <div slot="footer" class="dialog-footer">
-                                <el-button @click="dialogFormVisible4Edit = false">取消</el-button>
-                                <el-button type="primary" @click="handleEdit()">确定</el-button>
-                            </div>
+                        </el-dialog>
+                    </div>
+
+
+
+                    <!-- 权限的查看-->
+
+                    <div class="add-form">
+                        <el-dialog title="对应权限" :visible.sync="dialogFormVisible4pression">
+                            <template>
+                                <el-tabs v-model="activeName" type="card">
+                                    <el-tab-pane label="权限信息" name="first">
+                                        <div class="checkScrol">
+                                            <table class="datatable">
+                                                <thead>
+                                                <tr>
+                                                    <th>权限名</th>
+                                                    <th>keyWord</th>
+                                                    <th>描述</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="c in permissionData">
+                                                    <td><label :for="c.id">{{c.name}}</label></td>
+                                                    <td><label :for="c.id">{{c.keyword}}</label></td>
+                                                    <td><label :for="c.id">{{c.description}}</label></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </el-tab-pane>
+                                </el-tabs>
+                            </template>
                         </el-dialog>
                     </div>
 
@@ -215,89 +244,6 @@
                         </el-dialog>
                     </div>
 
-                    <!-- 编辑标签弹层 -->
-                 <!--   <div class="add-form">
-                        <el-dialog title="编辑角色" :visible.sync="dialogFormVisible4Edit">
-                            <template>
-                                <el-tabs v-model="activeName" type="card">
-                                    <el-tab-pane label="基本信息" name="first">
-                                        <el-form label-position="right" label-width="100px">
-                                            <el-row>
-                                                <el-col :span="12">
-                                                    <el-form-item label="编码">
-                                                        <el-input v-model="formData.code"/>
-                                                    </el-form-item>
-                                                </el-col>
-                                                <el-col :span="12">
-                                                    <el-form-item label="名称">
-                                                        <el-input v-model="formData.name"/>
-                                                    </el-form-item>
-                                                </el-col>
-                                            </el-row>
-                                            <el-row>
-                                                <el-col :span="12">
-                                                    <el-form-item label="适用性别">
-                                                        <el-select v-model="formData.sex">
-                                                            <el-option label="不限" value="0"></el-option>
-                                                            <el-option label="男" value="1"></el-option>
-                                                            <el-option label="女" value="2"></el-option>
-                                                        </el-select>
-                                                    </el-form-item>
-                                                </el-col>
-                                                <el-col :span="12">
-                                                    <el-form-item label="助记码">
-                                                        <el-input v-model="formData.helpCode"/>
-                                                    </el-form-item>
-                                                </el-col>
-                                            </el-row>
-                                            <el-row>
-                                                <el-col :span="24">
-                                                    <el-form-item label="说明">
-                                                        <el-input v-model="formData.remark" type="textarea"></el-input>
-                                                    </el-form-item>
-                                                </el-col>
-                                            </el-row>
-                                            <el-row>
-                                                <el-col :span="24">
-                                                    <el-form-item label="注意事项">
-                                                        <el-input v-model="formData.attention" type="textarea"></el-input>
-                                                    </el-form-item>
-                                                </el-col>
-                                            </el-row>
-                                        </el-form>
-                                    </el-tab-pane>
-                                    <el-tab-pane label="检查项信息" name="second">
-										<div class="checkScrol">
-											<table class="datatable">
-												<thead>
-													<tr>
-														<th>选择</th>
-														<th>项目编码</th>
-														<th>项目名称</th>
-														<th>项目说明</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr v-for="c in tableData">
-														<td>
-															<input :id="c.id" v-model="checkitemIds" type="checkbox" :value="c.id">
-														</td>
-														<td><label :for="c.id">{{c.code}}</label></td>
-														<td><label :for="c.id">{{c.name}}</label></td>
-														<td><label :for="c.id">{{c.remark}}</label></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-                                    </el-tab-pane>
-                                </el-tabs>
-                            </template>
-                            <div slot="footer" class="dialog-footer">
-                                <el-button @click="dialogFormVisible4Edit = false">取消</el-button>
-                                <el-button type="primary" @click="handleEdit()">确定</el-button>
-                            </div>
-                        </el-dialog>
-                    </div>-->
                 </div>
             </div>
         </div>
@@ -314,13 +260,66 @@
                     total:100,
                     queryString:null,
                 },
+                permissionData:[],
+                userData:{
+                    "rows": [{
+                        "description": null,
+                        "id": 1,
+                        "keyword": "ROLE_ADMIN",
+                        "menus": [],
+                        "name": "系统管理员",
+                        "permissions": [],
+                        "users": [{
+                            "birthday": "2019-11-13 00:00:00",
+                            "gender": "男",
+                            "id": 1,
+                            "password": "$2a$10$DNT40avouOSLuJw9FsQS6.5Ueq3MauWzMGLzlzEDURUFy6QIkrDhe",
+                            "remark": null,
+                            "roles": [],
+                            "station": null,
+                            "telephone": "17812321",
+                            "username": "admin"
+                        }]
+                    }, {
+                        "description": null,
+                        "id": 2,
+                        "keyword": "ROLE_HEALTH_MANAGER",
+                        "menus": [],
+                        "name": "健康管理师",
+                        "permissions": [],
+                        "users": [{
+                            "birthday": "2019-11-29 00:00:00",
+                            "gender": "男",
+                            "id": 3,
+                            "password": "$2a$10$4VVlZ4PS0ywbRN9N.sQMfO2mpOw75trCcidf79SqIJ.AP9w1s1hj.",
+                            "remark": null,
+                            "roles": [],
+                            "station": null,
+                            "telephone": "125215",
+                            "username": "test"
+                        }, {
+                            "birthday": "2019-11-12 00:00:00",
+                            "gender": "男",
+                            "id": 2,
+                            "password": "$2a$10$4VVlZ4PS0ywbRN9N.sQMfO2mpOw75trCcidf79SqIJ.AP9w1s1hj.",
+                            "remark": null,
+                            "roles": [],
+                            "station": null,
+                            "telephone": "123525",
+                            "username": "xiaoming"
+                        }]
+                    }],
+                    "total": 2
+                },
                 dataList: [],//列表数据
                 permissions:[],//权限组
                 formData: {},//表单数据
                 tableData:[],//新增和编辑表单中对应的检查项列表数据
                 checkitemIds:[],//新增和编辑表单中检查项对应的复选框，基于双向绑定可以进行回显和数据提交
                 dialogFormVisible: false,//控制添加窗口显示/隐藏
-                dialogFormVisible4Edit:false//控制编辑窗口显示/隐藏
+                dialogFormVisible4Edit:false,//控制编辑窗口显示/隐藏
+                dialogFormVisible4pression:false,
+                dialogFormVisible4user:false,
             },
             created() {
                 //this.dialogFormVisible4Edit = true;
@@ -337,8 +336,16 @@
                 },
                 //分页查询
                 findPage() {
-                    axios.post("/")
-
+                    var params = {
+                        currentPage:this.pagination.currentPage,
+                        pageSize:this.pagination.pageSize,
+                        queryString:this.pagination.queryString
+                    }
+                    axios.post("/role/findPage.do",params).then((res)=>{
+                        this.dataList = res.data.rows;
+                        this.pagination.total = res.data.total;
+                        this.userData = res.data.rows;
+                    })
                 },
                 // 重置表单
                 resetForm() {
@@ -365,7 +372,17 @@
 
                 //权限
                 Permission(row){
-                    alert(row.name);
+                    this.dialogFormVisible4pression = true;
+                    //查询
+                    var id = row.id;
+                    axios.get("/role/findPermission.do?id="+id).then((res)=>{
+                        this.permissionData = res.data.data;
+                    })
+                },
+
+                //角色对应用户
+                user(row){
+                    this.dialogFormVisible4user = true;
                 }
             }
         })

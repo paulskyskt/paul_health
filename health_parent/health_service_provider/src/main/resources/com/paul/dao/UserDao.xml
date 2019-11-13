@@ -6,4 +6,8 @@
     <select id="findByUserName" parameterType="string" resultType="com.paul.pojo.User">
         select * from t_user where username = #{username}
     </select>
+
+    <select id="findUsersByRoleId" parameterType="int" resultType="com.paul.pojo.User">
+        SELECT * FROM t_user WHERE id IN (SELECT user_id FROM t_user_role WHERE role_id = #{id})
+     </select>
 </mapper>

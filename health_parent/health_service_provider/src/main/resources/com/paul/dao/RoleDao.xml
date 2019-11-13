@@ -5,4 +5,26 @@
     <select id="findByUserId" resultType="com.paul.pojo.Role" parameterType="int">
        SELECT * FROM t_role WHERE id IN (SELECT role_id FROM t_user_role WHERE user_id = #{id})
     </select>
+
+    <resultMap id="role" type="com.paul.pojo.Role">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <collection property="users" column="id" select="com.paul.dao.UserDao.findUsersByRoleId"></collection>
+    </resultMap>
+    <select id="findPage" parameterType="string" resultMap="role">
+        select * from t_role
+        <if test="value !=null and value.length > 0">
+            where name like CONCAT(CONCAT('%',#{value},'%'))
+        </if>
+    </select>
+
+
+    <select id="find_M_permission_role" resultType="int" parameterType="int">
+       SELECT permission_id FROM t_role_permission WHERE role_id = #{id}
+    </select>
+
+
+    <select id="findPermissionById"  resultType="com.paul.pojo.Permission" parameterType="int">
+        select * from t_permission where id = #{id}
+    </select>
 </mapper>

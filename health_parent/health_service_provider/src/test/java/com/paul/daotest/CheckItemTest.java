@@ -35,6 +35,39 @@ public class CheckItemTest {
    @Autowired
    private SetmealDao setmealDao;
 
+    @Test
+    public void test16(){
+
+    }
+
+    @Test
+    public void test15(){
+        List<User> users = userDao.findUsersByRoleId(1);
+        for (User user : users) {
+            String username = user.getUsername();
+            System.out.println(username);
+        }
+    }
+
+
+    @Test
+    public void test14(){
+        Permission permissionById = roleDao.findPermissionById(1);
+        System.out.println(permissionById.getName());
+      /*  List<Integer> list = roleDao.find_M_permission_role(1);
+        for (Integer integer : list) {
+            System.out.println(integer);
+        }*/
+    }
+
+    @Test
+    public void test13(){
+        Page<Role> page = roleDao.findPage("管理");
+        List<Role> result = page.getResult();
+        for (Role role : result) {
+            System.out.println(role.getName());
+        }
+    }
 
    @Test
    public void test12(){
