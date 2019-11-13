@@ -37,6 +37,7 @@ public class OrderSettingController {
                     String date = strings[0];
                     //获取预约人数
                     String number = strings[1];
+
                     OrderSetting orderSetting = new OrderSetting(new Date(date),Integer.parseInt(number));
                     orderSettingList.add(orderSetting);
                 }

@@ -60,9 +60,13 @@
                     </div>
                     <el-table size="small" current-row-key="id" :data="dataList" stripe highlight-current-row>
                         <el-table-column type="index" align="center" label="序号"></el-table-column>
-                        <el-table-column prop="code" label="角色名称" align="center"></el-table-column>
-                        <el-table-column prop="name" label="角色关联权限" align="center"></el-table-column>
-                        <el-table-column prop="helpCode" label="角色关联菜单" align="center"></el-table-column>
+                        <el-table-column prop="name" label="角色名称" align="center"></el-table-column>
+                        <el-table-column label="权限组" align="center">
+                            <template slot-scope="scope">
+                                <el-button type="primary" size="mini" @click="Permission(scope.row)">权限</el-button>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="menu" label="角色关联菜单" align="center"></el-table-column>
                         <el-table-column label="操作" align="center">
                             <template slot-scope="scope">
                                 <el-button type="primary" size="mini" @click="handleUpdate(scope.row)">编辑</el-button>
@@ -311,6 +315,7 @@
                     queryString:null,
                 },
                 dataList: [],//列表数据
+                permissions:[],//权限组
                 formData: {},//表单数据
                 tableData:[],//新增和编辑表单中对应的检查项列表数据
                 checkitemIds:[],//新增和编辑表单中检查项对应的复选框，基于双向绑定可以进行回显和数据提交
@@ -318,7 +323,7 @@
                 dialogFormVisible4Edit:false//控制编辑窗口显示/隐藏
             },
             created() {
-                this.dialogFormVisible4Edit = true;
+                //this.dialogFormVisible4Edit = true;
                 this.findPage();
             },
             methods: {
@@ -332,6 +337,7 @@
                 },
                 //分页查询
                 findPage() {
+                    axios.post("/")
 
                 },
                 // 重置表单
@@ -355,6 +361,11 @@
                 // 删除
                 handleDelete(row) {
 
+                },
+
+                //权限
+                Permission(row){
+                    alert(row.name);
                 }
             }
         })
