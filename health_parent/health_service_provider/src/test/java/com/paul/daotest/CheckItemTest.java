@@ -35,6 +35,13 @@ public class CheckItemTest {
    @Autowired
    private SetmealDao setmealDao;
 
+
+   @Test
+   public void test12(){
+       User admin = userDao.findByUserName("admin");
+       System.out.println(admin.getId());
+   }
+
     @Test
     public void test11(){
         Set<Permission> permissions = permissionDao.findByRoleId(2);

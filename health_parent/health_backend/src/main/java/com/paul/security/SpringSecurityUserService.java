@@ -42,7 +42,7 @@ public class SpringSecurityUserService implements UserDetailsService {
                 list.add(new SimpleGrantedAuthority(permission.getKeyword()));
             }
         }
-
-        return new org.springframework.security.core.userdetails.User(username,user.getPassword(),list);
+        org.springframework.security.core.userdetails.User user1 = new org.springframework.security.core.userdetails.User(username, user.getPassword(), list);
+        return user1;
     }
 }

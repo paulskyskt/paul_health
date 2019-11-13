@@ -46,5 +46,5 @@
     </bean>
 
     <import resource="spring-redis.xml"></import>
-    <import resource="spring-security.xml"/>
+    <import resource="spring-security.xml"></import>
 </beans>
