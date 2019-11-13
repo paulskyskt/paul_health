@@ -1,12 +1,8 @@
 package com.paul.daotest;
 
 import com.github.pagehelper.Page;
-import com.paul.dao.CheckGroupDao;
-import com.paul.dao.CheckItemDao;
-import com.paul.dao.SetmealDao;
-import com.paul.pojo.CheckGroup;
-import com.paul.pojo.CheckItem;
-import com.paul.pojo.Setmeal;
+import com.paul.dao.*;
+import com.paul.pojo.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +11,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-dao.xml")
 public class CheckItemTest {
+
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private RoleDao roleDao;
+
+    @Autowired
+    private PermissionDao permissionDao;
 
     @Autowired
     private CheckItemDao checkItemDao;
@@ -29,7 +35,22 @@ public class CheckItemTest {
    @Autowired
    private SetmealDao setmealDao;
 
+    @Test
+    public void test11(){
+        Set<Permission> permissions = permissionDao.findByRoleId(2);
+        for (Permission permission : permissions) {
+            System.out.println(permission.getId());
+        }
+    }
 
+
+    @Test
+    public void test10(){
+        Set<Role> roles = roleDao.findByUserId(3);
+        for (Role role : roles) {
+            System.out.println(role);
+        }
+    }
 
     @Test
     public void test9(){
