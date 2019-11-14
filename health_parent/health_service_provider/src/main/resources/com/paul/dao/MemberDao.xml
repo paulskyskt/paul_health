@@ -24,4 +24,11 @@
         select * from t_member
     </select>
 
+    <select id="findAllAddress" resultType="string">
+        SELECT DISTINCT address FROM t_member
+    </select>
+
+    <select id="findCountByAddress" resultType="int" parameterType="string">
+        SELECT COUNT(*) FROM t_member WHERE address = #{address}
+    </select>
 </mapper>

@@ -11,8 +11,11 @@ public interface MemberDao {
 
     Integer findMemberCountBeforeDate(String m);
 
-
     List<Member> findAll();
+
+    List<String> findAllAddress();
+
+    Integer findCountByAddress(String address);
 }
 
 

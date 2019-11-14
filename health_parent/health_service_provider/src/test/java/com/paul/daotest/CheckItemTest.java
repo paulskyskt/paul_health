@@ -35,9 +35,38 @@ public class CheckItemTest {
    @Autowired
    private SetmealDao setmealDao;
 
+   @Autowired
+   private MemberDao memberDao;
+
+    @Test
+    public void test21(){
+    }
+
+    @Test
+    public void test20(){
+    }
+
+    @Test
+    public void test19(){
+    }
+
+    @Test
+    public void test18(){
+    }
+
+    @Test
+    public void test17(){
+        Integer count = memberDao.findCountByAddress("北京");
+        System.out.println(count);
+    }
+
+
     @Test
     public void test16(){
-
+        List<String> list = memberDao.findAllAddress();
+        for (String s : list) {
+            System.out.println(s);
+        }
     }
 
     @Test

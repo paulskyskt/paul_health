@@ -22,10 +22,10 @@
 var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
 var app = {};
-option = null;
+//option = null;
 
 axios.get("/report/memberMap.do").then((res)=>{
-    option = {
+    myChart.setOption(option = {
         title : {
             text: '会员人数',
             left: 'center'
@@ -36,7 +36,7 @@ axios.get("/report/memberMap.do").then((res)=>{
         legend: {
             orient: 'vertical',
             left: 'left',
-            data:['会员人数','iphone4','iphone5']
+            data:['会员人数']
         },
         visualMap: {
             min: 0,
@@ -72,31 +72,33 @@ axios.get("/report/memberMap.do").then((res)=>{
                         show: true
                     }
                 },
-                data:/*res.data.data*/
-                [
-                    {name: '北京',value: 3},
-                    {name: '天津',value:19},
-                    {name: '上海',value:14},
-                    {name: '重庆',value:1},
-                    {name: '河北',value:2},
-                    {name: '河南',value:5},
-                    {name: '云南',value:10},
-                    {name: '辽宁',value:9},
-                    {name: '黑龙江',value:9},
-                ]
+                data:res.data.data
+                    /*[
+                        {name: '北京',value: 3},
+                        {name: '天津',value:19},
+                        {name: '上海',value:14},
+                        {name: '重庆',value:1},
+                        {name: '河北',value:2},
+                        {name: '河南',value:5},
+                        {name: '云南',value:10},
+                        {name: '辽宁',value:9},
+                        {name: '黑龙江',value:9},
+                    ]*/
             },
 
         ]
-    };
+    });
+
 })
 
 
 
 
 
-if (option && typeof option === "object") {
+/*if (option && typeof option === "object") {
     myChart.setOption(option, true);
-}
+}*/
+
        </script>
    </body>
 </html>
