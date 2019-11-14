@@ -12,7 +12,9 @@ public interface MemberDao {
     Integer findMemberCountBeforeDate(String m);
 
 
+    List<Member> findAll();
 }
+
 
 
 

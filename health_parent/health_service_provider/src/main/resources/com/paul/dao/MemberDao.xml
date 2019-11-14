@@ -20,4 +20,8 @@
         SELECT COUNT(id) FROM t_member WHERE regTime &lt;= #{date}
     </select>
 
+    <select id="findAll" resultType="com.paul.pojo.Member">
+        select * from t_member
+    </select>
+
 </mapper>

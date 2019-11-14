@@ -44,4 +44,9 @@ public class MemberServiceImpl implements MemberService {
         }
         return arrayList;
     }
+
+    @Override
+    public List<Member> findAll() {
+        return memberDao.findAll();
+    }
 }

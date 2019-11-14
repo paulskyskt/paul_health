@@ -10,7 +10,10 @@ public interface MemberService {
     void add(Member m);
 
     List<Integer> findMemberCountByMonth(List<String> list);
+
+    List<Member> findAll();
 }
+
 
 
 
