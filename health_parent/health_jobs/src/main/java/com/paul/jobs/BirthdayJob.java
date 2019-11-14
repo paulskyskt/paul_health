@@ -3,6 +3,7 @@ package com.paul.jobs;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.paul.pojo.Member;
 import com.paul.service.MemberService;
+import com.paul.utils.SMSUtils;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Component
 @Lazy(false)
-public class TestJob {
+public class BirthdayJob {
 
     @Reference
     private MemberService memberService;
@@ -55,6 +56,7 @@ public class TestJob {
                     String name = member.getName();
                     String message = "happy birthday to "+name;
                     System.out.println(message);
+                    //SMSUtils.sendShortMessage(SMSUtils.VALIDATE_CODE,member.getPhoneNumber(),message);
                 }
             }
         }
