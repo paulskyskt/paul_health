@@ -2,7 +2,7 @@ package com.paul.utils;
 
 public class NativePlaceUtils {
     public static void main(String[] args) {
-        String idNum = "500103199602230019";
+        String idNum = "110101199003071233";
         int nativePlaceCode = Integer.parseInt(idNum.substring(0, 6));
         System.out.println(nativePlaceCode);
         String nativePlace = NativePlaceUtils.getNativePlace(nativePlaceCode);

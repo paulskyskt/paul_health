@@ -8,7 +8,7 @@ import java.util.Set;
 public class Test {
     public static void main(String[] args) {
 
-        Map<String, String> sex = Test.getBirAgeSex("500103199602230019");
+        Map<String, String> sex = Test.getBirAgeSex("110101199003071233");
         Set<String> strings = sex.keySet();
         for (String string : strings) {
             String value = sex.get(string);
