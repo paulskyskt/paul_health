@@ -1,7 +1,9 @@
 package com.paul.aop;
 
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.paul.pojo.SysLog;
+import com.paul.service.ISysLogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
@@ -27,6 +29,9 @@ public class LogAop {
 
     @Autowired
     private HttpServletRequest request;
+
+    @Reference
+    private ISysLogService iSysLogService;
 
     /**
      * 访问时间
@@ -129,8 +134,6 @@ public class LogAop {
         sysLog.setUsername(username);
         sysLog.setUrl(url);
         //调用业务层存入数据库
-        System.out.println(sysLog);
-
-
+        iSysLogService.save(sysLog);
     }
 }

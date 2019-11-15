@@ -90,6 +90,9 @@
                         </el-pagination>
                     </div>
 
+
+
+
                     <!--角色关联用户-->
                     <div class="add-form">
                         <el-dialog title="对应权限" :visible.sync="dialogFormVisible4user">
@@ -108,11 +111,10 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr v-for="c in userData">
-                                                    <td><label :for="c.id">{{c.users.username}}</label></td>
+                                                    <td><label :for="c.id">{{c.users}}</label></td>
                                                     <td><label :for="c.id">{{c.gender}}</label></td>
                                                     <td><label :for="c.id">{{c.telephone}}</label></td>
                                                     <td><label :for="c.id">{{c.birthday}}</label></td>
-                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -261,56 +263,7 @@
                     queryString:null,
                 },
                 permissionData:[],
-                userData:{
-                    "rows": [{
-                        "description": null,
-                        "id": 1,
-                        "keyword": "ROLE_ADMIN",
-                        "menus": [],
-                        "name": "系统管理员",
-                        "permissions": [],
-                        "users": [{
-                            "birthday": "2019-11-13 00:00:00",
-                            "gender": "男",
-                            "id": 1,
-                            "password": "$2a$10$DNT40avouOSLuJw9FsQS6.5Ueq3MauWzMGLzlzEDURUFy6QIkrDhe",
-                            "remark": null,
-                            "roles": [],
-                            "station": null,
-                            "telephone": "17812321",
-                            "username": "admin"
-                        }]
-                    }, {
-                        "description": null,
-                        "id": 2,
-                        "keyword": "ROLE_HEALTH_MANAGER",
-                        "menus": [],
-                        "name": "健康管理师",
-                        "permissions": [],
-                        "users": [{
-                            "birthday": "2019-11-29 00:00:00",
-                            "gender": "男",
-                            "id": 3,
-                            "password": "$2a$10$4VVlZ4PS0ywbRN9N.sQMfO2mpOw75trCcidf79SqIJ.AP9w1s1hj.",
-                            "remark": null,
-                            "roles": [],
-                            "station": null,
-                            "telephone": "125215",
-                            "username": "test"
-                        }, {
-                            "birthday": "2019-11-12 00:00:00",
-                            "gender": "男",
-                            "id": 2,
-                            "password": "$2a$10$4VVlZ4PS0ywbRN9N.sQMfO2mpOw75trCcidf79SqIJ.AP9w1s1hj.",
-                            "remark": null,
-                            "roles": [],
-                            "station": null,
-                            "telephone": "123525",
-                            "username": "xiaoming"
-                        }]
-                    }],
-                    "total": 2
-                },
+                userData:{},
                 dataList: [],//列表数据
                 permissions:[],//权限组
                 formData: {},//表单数据

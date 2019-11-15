@@ -1,5 +1,6 @@
 package com.paul.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 /**
  * AOP封装信息实体类
@@ -7,7 +8,7 @@ import java.util.Date;
  * @author Think
  * @date 2019/11/15
  */
-public class SysLog {
+public class SysLog implements Serializable {
     private String id;
     private Date visitTime;
     private String visitTimeStr;

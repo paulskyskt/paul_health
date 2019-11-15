@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -38,6 +39,9 @@ public class CheckItemTest {
    @Autowired
    private MemberDao memberDao;
 
+   @Autowired
+   private SysLogDao sysLogDao;
+
     @Test
     public void test21(){
     }
@@ -52,6 +56,14 @@ public class CheckItemTest {
 
     @Test
     public void test18(){
+        SysLog sysLog = new SysLog();
+        sysLog.setExecutionTime(2L);
+        sysLog.setIp("0.0.01");
+        sysLog.setMethod("[类名]"+"class"+"[方法名]"+"method");
+        sysLog.setVisitTime(new Date());
+        sysLog.setUsername("admin");
+        sysLog.setUrl("/elementui/index.js");
+        sysLogDao.save(sysLog);
     }
 
     @Test
