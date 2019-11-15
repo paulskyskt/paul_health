@@ -54,7 +54,7 @@ public class SetmealServiceImpl implements SetmealService {
 
         if ( checkgroupIds != null && checkgroupIds.length > 0 ) {
             for (Integer checkgroupId : checkgroupIds) {
-                HashMap<String, Integer> map = new HashMap<>();
+                HashMap<String, Integer> map = new HashMap<>(10);
                 map.put("checkgroupId", checkgroupId);
                 map.put("setmealId", setmeal.getId());
                 setmealDao.setSetmealAndCheckgroup(map);

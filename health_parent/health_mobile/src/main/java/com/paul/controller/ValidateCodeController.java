@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import redis.clients.jedis.JedisPool;
 
+/**
+ * @author Think
+ */
 @SuppressWarnings("ALL")
 @RestController
 @RequestMapping("/validateCode")
