@@ -4,6 +4,8 @@ import com.paul.entity.PageResult;
 import com.paul.entity.QueryPageBean;
 import com.paul.pojo.SysLog;
 
+import java.util.Date;
+
 /**
  * @author Think
  */
@@ -21,6 +23,19 @@ public interface ISysLogService {
      * @return
      */
     PageResult findPage(QueryPageBean queryPageBean);
+
+    /**
+     * 根据id删除日志记录
+     * @param id
+     */
+    void deleteById(Integer id);
+
+    /**
+     * 根据时间删除日志记录
+     * @param date1
+     */
+    void deleteByTime(Date date1);
 }
+
 
 

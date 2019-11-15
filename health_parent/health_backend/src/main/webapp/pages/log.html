@@ -56,7 +56,7 @@
                     <div class="filter-container">
                         <el-input placeholder="项目编码/项目名称" v-model="pagination.queryString" style="width: 200px;" class="filter-item"></el-input>
                         <el-button @click="findPage()" class="dalfBut">查询</el-button>
-                        <el-input placeholder="清除多久之前的数据" v-model="clearTime" style="width: 200px;" class="filter-item"></el-input>
+                        <el-input placeholder="清除多久之前的数据-分隔" v-model="clearTime" style="width: 200px;" class="filter-item"></el-input>
                         <el-button type="primary" class="butT" @click="clear()">按时间清除</el-button>
                     </div>
                     <el-table size="small" current-row-key="id" :data="dataList" stripe highlight-current-row>
@@ -103,6 +103,7 @@
                     queryString:null,
                 },
                 permissionData:[],
+                clearTime:null,
                 userData:{},
                 dataList: [],//列表数据
                 permissions:[],//权限组
@@ -160,11 +161,33 @@
                 },
                 // 删除
                 handleDelete(row) {
-
+                    this.$confirm("确认删除当前选中记录吗？","提示",{type:'warning'}).then(()=>{
+                        axios.get("/sysLog/delete.do?id="+row.id).then((res)=>{
+                            if(res.data.flag){
+                                //删除成功
+                                this.$message.success(res.data.message);
+                                this.findPage();
+                            }else {
+                                //失败
+                                this.$message.error(res.data.message);
+                            }
+                        })
+                    })
                 },
+                //按时间删除
+                clear(){
+                    var clearTime = this.clearTime;
+                    axios.get("/sysLog/deleteByTime.do?date="+clearTime).then((res)=>{
+                       if(res.data.flag){
+                           this.$message.success(res.data.message);
+                       }else {
+                           this.$message.error(res.data.message);
+                       }
+                    }).finally(()=>{
+                        this.findPage();
+                    });
 
-
-
+                }
 
             }
         })

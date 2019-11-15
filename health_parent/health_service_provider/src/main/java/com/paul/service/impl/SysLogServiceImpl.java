@@ -13,6 +13,7 @@ import org.aspectj.lang.annotation.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service(interfaceClass = ISysLogService.class)
@@ -43,5 +44,15 @@ public class SysLogServiceImpl implements ISysLogService {
         long total = setmeals.getTotal();
 
         return new PageResult(total, list);
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        sysLogDao.deleteById(id);
+    }
+
+    @Override
+    public void deleteByTime(Date date1) {
+        sysLogDao.deleteByTime(date1);
     }
 }

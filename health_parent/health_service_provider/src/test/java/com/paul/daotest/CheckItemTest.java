@@ -3,6 +3,7 @@ package com.paul.daotest;
 import com.github.pagehelper.Page;
 import com.paul.dao.*;
 import com.paul.pojo.*;
+import com.paul.utils.DateUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,15 @@ public class CheckItemTest {
 
     @Test
     public void test19(){
+        String date  = "2019-1-2";
+
+        Date date1 = null;
+        try {
+            date1 = DateUtils.parseString2Date(date);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        sysLogDao.deleteByTime(date1);
     }
 
     @Test

@@ -2,6 +2,7 @@ package com.paul.aop;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.paul.controller.SysLogController;
 import com.paul.pojo.SysLog;
 import com.paul.service.ISysLogService;
 import org.aspectj.lang.JoinPoint;
@@ -65,22 +66,30 @@ public class LogAop {
         visitTime = new Date();
         //访问的类
         executionClass = jp.getTarget().getClass();
+        //把本类置 和日志controller 置为空
+        if ( executionClass == LogAop.class || executionClass == SysLogController.class) {
+            executionClass = null;
+        }
         //获取方法的参数
         Object[] args = jp.getArgs();
         //获取方法名
         String methodName = jp.getSignature().getName();
-        //判断获取无参方法/有参方法
-        if ( args == null || args.length == 0 ) {
-            //访问的方法
-            executionMethod = executionClass.getMethod(methodName);
-        } else {
-            //获取有参数的方法，需要获取参数对应的class
-            Class[] classArgs = new Class[args.length];
-            for (int i = 0; i < args.length; i++) {
-                classArgs[i] = args[i].getClass();
+        //判断executionClass为空不
+
+        if(executionClass != null){
+            //判断获取无参方法/有参方法
+            if ( args == null || args.length == 0 ) {
+                //访问的方法
+                executionMethod = executionClass.getMethod(methodName);
+            } else {
+                //获取有参数的方法，需要获取参数对应的class
+                Class[] classArgs = new Class[args.length];
+                for (int i = 0; i < args.length; i++) {
+                    classArgs[i] = args[i].getClass();
+                }
+                //访问的方法
+                executionMethod = executionClass.getMethod(methodName, classArgs);
             }
-            //访问的方法
-            executionMethod = executionClass.getMethod(methodName, classArgs);
         }
     }
 
@@ -108,32 +117,35 @@ public class LogAop {
             //反射获取 类上的 @RequestMapping
             RequestMapping classAnnotation = (RequestMapping) executionClass.getAnnotation(RequestMapping.class);
             //判断
-            if(classAnnotation!=null){
+            if ( classAnnotation != null ) {
                 //获取注解上的值
                 String[] classValue = classAnnotation.value();
                 //判断
-                if(executionMethod != null){
+                if ( executionMethod != null ) {
                     //执行方法上的@RequestMapping
                     RequestMapping methodAnnotation = executionMethod.getAnnotation(RequestMapping.class);
                     //判断
-                    if(methodAnnotation!=null){
+                    if ( methodAnnotation != null ) {
                         //获取值
                         String[] methodValue = methodAnnotation.value();
                         //获取url
-                        url = classValue[0]+methodValue[0];
+                        url = classValue[0] + methodValue[0];
                     }
                 }
             }
         }
-        //封装成SysLog对象
-        SysLog sysLog = new SysLog();
-        sysLog.setExecutionTime(executionTime);
-        sysLog.setIp(ip);
-        sysLog.setMethod("[类名]"+executionClass.getName()+"[方法名]"+executionMethod.getName());
-        sysLog.setVisitTime(visitTime);
-        sysLog.setUsername(username);
-        sysLog.setUrl(url);
-        //调用业务层存入数据库
-        iSysLogService.save(sysLog);
+
+        if(executionClass != null){
+            //封装成SysLog对象
+            SysLog sysLog = new SysLog();
+            sysLog.setExecutionTime(executionTime);
+            sysLog.setIp(ip);
+            sysLog.setMethod("[类名]" + executionClass.getName() + "[方法名]" + executionMethod.getName());
+            sysLog.setVisitTime(visitTime);
+            sysLog.setUsername(username);
+            sysLog.setUrl(url);
+            //调用业务层存入数据库
+            iSysLogService.save(sysLog);
+        }
     }
 }

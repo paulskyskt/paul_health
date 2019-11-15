@@ -12,4 +12,12 @@
             where username like CONCAT(CONCAT('%',#{value},'%')) or method like CONCAT(CONCAT('%',#{value},'%'))
         </if>
     </select>
+
+    <delete id="deleteById" parameterType="int">
+        delete from t_syslog where id = #{id}
+    </delete>
+
+    <delete id="deleteByTime" parameterType="java.util.Date">
+        delete from t_sysLog WHERE visitTime  &lt;= #{value}
+    </delete>
 </mapper>
