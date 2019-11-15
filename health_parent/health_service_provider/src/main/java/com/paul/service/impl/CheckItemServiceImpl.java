@@ -16,6 +16,9 @@ import java.util.List;
 /**
  * 检查项目服务
  */
+/**
+ * @author Think
+ */
 @Service(interfaceClass = CheckItemService.class)
 @Transactional
 public class CheckItemServiceImpl implements CheckItemService {

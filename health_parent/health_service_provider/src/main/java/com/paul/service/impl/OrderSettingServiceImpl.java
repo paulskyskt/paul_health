@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+/**
+ * @author Think
+ */
 @Service(interfaceClass = OrderSettingService.class)
 @Transactional
 public class OrderSettingServiceImpl implements OrderSettingService {
@@ -36,9 +39,10 @@ public class OrderSettingServiceImpl implements OrderSettingService {
     public List<Map> getOrderSettingByMonth(String date) {
         //传入的格式  2019-11
         //返回的格式 [{"date":10,"number":666,"reservations":0},{"date":5,"number":300,"reservations":0},{date=7, number=300, reservations=0}]
-
-        String begin = date+"-1";//2019-11-1
-        String end = date + "-31";//2019-11-31
+        //2019-11-1
+        String begin = date+"-1";
+        //2019-11-31
+        String end = date + "-31";
 
         //map集合用于参数的传递
         HashMap<String, String> mapParams = new HashMap<>();
@@ -47,7 +51,8 @@ public class OrderSettingServiceImpl implements OrderSettingService {
         List<OrderSetting> orderSettingList = orderSettingDao.getOrderSettingByMonth(mapParams);
 
         //转换为前台需要的json格式数据
-        List<Map> result = new ArrayList<>(); //需要的
+        //需要的
+        List<Map> result = new ArrayList<>();
         for (OrderSetting orderSetting : orderSettingList) {
             Map hashMap = new HashMap();
 
@@ -55,7 +60,8 @@ public class OrderSettingServiceImpl implements OrderSettingService {
             Date orderDate = orderSetting.getOrderDate();
             int reservations = orderSetting.getReservations();
 
-            hashMap.put("date",orderDate.getDate());//获取几号！！！！
+            //获取几号！！！！
+            hashMap.put("date",orderDate.getDate());
             hashMap.put("number",number);
             hashMap.put("reservations",reservations);
 

@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author Think
+ */
 @Service(interfaceClass = MemberService.class)
 @Transactional
 public class MemberServiceImpl implements MemberService {

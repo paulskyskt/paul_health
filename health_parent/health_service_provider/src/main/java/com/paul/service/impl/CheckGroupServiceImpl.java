@@ -13,7 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
-
+/**
+ * @author Think
+ */
 @Service(interfaceClass = CheckGroupService.class)
 @Transactional
 public class CheckGroupServiceImpl implements CheckGroupService {

@@ -63,11 +63,11 @@ public class OrderController {
             //短信通知预约成功信息
             String orderDate = (String) map.get("orderDate");
             //发送
-            try{
+           /* try{
                 SMSUtils.sendShortMessage(SMSUtils.ORDER_NOTICE,telephone,orderDate);
             }catch (Exception e){
                 e.printStackTrace();
-            }
+            }*/
         }
         return result;
     }
