@@ -1,5 +1,7 @@
 package com.paul.service;
 
+import com.paul.entity.PageResult;
+import com.paul.entity.QueryPageBean;
 import com.paul.pojo.SysLog;
 
 /**
@@ -12,5 +14,13 @@ public interface ISysLogService {
      * @param sysLog
      */
     void save(SysLog sysLog);
+
+    /**
+     * 分页查询
+     * @param queryPageBean
+     * @return
+     */
+    PageResult findPage(QueryPageBean queryPageBean);
 }
+
 

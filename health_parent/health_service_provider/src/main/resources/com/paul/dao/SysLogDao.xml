@@ -5,4 +5,11 @@
     <insert id="save" parameterType="com.paul.pojo.SysLog">
         insert into t_syslog(visitTime,username,ip,url,executionTime,method) values(#{visitTime},#{username},#{ip},#{url},#{executionTime},#{method})
     </insert>
+
+    <select id="findPage" parameterType="string" resultType="com.paul.pojo.SysLog">
+        select * from t_syslog
+        <if test="value !=null and value.length > 0">
+            where username like CONCAT(CONCAT('%',#{value},'%')) or method like CONCAT(CONCAT('%',#{value},'%'))
+        </if>
+    </select>
 </mapper>
