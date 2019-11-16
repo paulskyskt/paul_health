@@ -29,6 +29,15 @@ public class Children implements Serializable {
     private String title;
     private String linkUrl;
 
+    public Children() {
+    }
+
+    public Children(String path, String title, String linkUrl) {
+        this.path = path;
+        this.title = title;
+        this.linkUrl = linkUrl;
+    }
+
     public String getPath() {
         return path;
     }

@@ -6,10 +6,14 @@ import com.github.pagehelper.PageHelper;
 import com.paul.dao.RoleDao;
 import com.paul.entity.PageResult;
 import com.paul.entity.QueryPageBean;
+import com.paul.pojo.Aside;
 import com.paul.pojo.Permission;
 import com.paul.pojo.Role;
 import com.paul.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -59,4 +63,6 @@ public class RoleServiceImpl implements RoleService {
 
         return reuslt;
     }
+
+
 }
