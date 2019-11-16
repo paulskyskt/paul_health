@@ -1,19 +1,11 @@
 package com.paul.service.impl;
-
 import com.alibaba.dubbo.config.annotation.Service;
 import com.paul.dao.MenuDao;
-import com.paul.pojo.Aside;
-import com.paul.pojo.Children;
 import com.paul.pojo.Menu;
 import com.paul.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service(interfaceClass = MenuService.class)
