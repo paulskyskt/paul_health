@@ -23,7 +23,7 @@ public class CheckGroupServiceImpl implements CheckGroupService {
     @Autowired
     private CheckGroupDao checkGroupDao;
 
-    //新增检查组，同时检查项和检查组关联
+
     @Override
     public void add(CheckGroup checkGroup, Integer[] checkitemIds) {
 
@@ -42,7 +42,6 @@ public class CheckGroupServiceImpl implements CheckGroupService {
 
     }
 
-    //分页 模糊查询
     @Override
     public PageResult findPage(QueryPageBean queryPageBean) {
         //获取分页  模糊查询 参数数据

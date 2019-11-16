@@ -13,7 +13,6 @@ import redis.clients.jedis.JedisPool;
 /**
  * @author Think
  */
-@SuppressWarnings("ALL")
 @RestController
 @RequestMapping("/validateCode")
 public class ValidateCodeController {

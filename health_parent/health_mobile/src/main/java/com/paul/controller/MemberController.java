@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.Map;
 
+/**
+ * @author Think
+ */
 @RestController
 @RequestMapping("/member")
 public class MemberController {
@@ -60,6 +63,6 @@ public class MemberController {
         //存入redis
         String json = JSON.toJSON(member).toString();
         jedisPool.getResource().setex(telephone,60*30,json);
-            return new Result(true,MessageConstant.LOGIN_SUCCESS);
+        return new Result(true,MessageConstant.LOGIN_SUCCESS);
     }
 }
