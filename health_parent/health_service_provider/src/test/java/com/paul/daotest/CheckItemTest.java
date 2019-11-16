@@ -1,19 +1,18 @@
 package com.paul.daotest;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.paul.dao.*;
 import com.paul.pojo.*;
 import com.paul.utils.DateUtils;
+import com.qiniu.util.Json;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-dao.xml")
@@ -43,12 +42,59 @@ public class CheckItemTest {
    @Autowired
    private SysLogDao sysLogDao;
 
+    @Autowired
+    private MenuDao menuDao;
+
     @Test
     public void test21(){
+
+        List<Menu> secondMenus = menuDao.findSecondMenuByFirstMenu_Id(1);
+        Object json = JSON.toJSON(secondMenus);
+        System.out.println(json);
     }
 
     @Test
     public void test20(){
+        //根据name查询出role_id
+        Integer role_id = menuDao.findRole_idByUsername("test");
+        //根据role_id 查询出对应菜单menu_id
+        List<Integer> menu_ids = menuDao.findMenu_idsByRole_id(role_id);
+
+        //获取首位
+        Integer f = menu_ids.get(0);
+        //获取末位
+        Integer l = menu_ids.get(menu_ids.size() - 1);
+
+        //根据菜单id范围 和parentMenuId 为空查询出一级菜单
+        List<Menu> firstMenuList = menuDao.findFirstMenuByRole_id(f,l);
+
+
+        //根据一级菜单parentMenuId查询出对应子菜单
+        //根据一级菜单parentMenuId查询出对应子菜单
+        List<List<Menu>> secondMenuList =  new ArrayList<>();
+        for (Menu menu : firstMenuList) {
+            Integer parentMenuId = menu.getId();
+            List<Menu> secondMenus = menuDao.findSecondMenuByFirstMenu_Id(parentMenuId);
+            secondMenuList.add(secondMenus);
+        }
+
+        //
+        for (int i = 0; i < secondMenuList.size(); i++) {
+            List<Menu> menuList = secondMenuList.get(i);
+            Menu menu = firstMenuList.get(i);
+            menu.setChildren(menuList);
+        }
+
+
+
+
+
+
+        Object json = JSON.toJSON(firstMenuList);
+        System.out.println(json);
+
+
+
     }
 
     @Test

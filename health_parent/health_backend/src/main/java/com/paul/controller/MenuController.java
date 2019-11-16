@@ -4,7 +4,11 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.paul.constant.MessageConstant;
 import com.paul.entity.Result;
 import com.paul.pojo.Aside;
+import com.paul.pojo.Menu;
 import com.paul.service.MenuService;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,7 +31,7 @@ public class MenuController {
            List<Children> childrenList = new ArrayList<>();
            Children c_1 = new Children("/2-1", "会员档案", "member.html");
            Children c_2 = new Children("/2-2", "体检上传", "member.html");
-           Children c_3 = new Children("/2-3", "会员统计", "doc-example_map-example.html");
+           Children c_3 = new Children("/2-3", "会员统计", "member_map.html");
            childrenList.add(c_1);
            childrenList.add(c_2);
            childrenList.add(c_3);
@@ -36,8 +40,11 @@ public class MenuController {
            asideList.add(aside);*/
             //-----------------------------------------------------------------------------------------------------------
 
+            SecurityContext context = SecurityContextHolder.getContext();
+            User user = (User) context.getAuthentication().getPrincipal();
+            String username = user.getUsername();
 
-            List<Aside> asideList =  menuService.findAside();
+            List<Menu> asideList =  menuService.findAside(username);
 
             return new Result(true, MessageConstant.QUERY_CHECKGROUP_SUCCESS,asideList);
         }catch (Exception e){

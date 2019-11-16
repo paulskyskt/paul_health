@@ -19,6 +19,11 @@ public class Aside implements Serializable {
     public Aside() {
     }
 
+    public Aside(String path, String title, String icon) {
+        this.path = path;
+        this.title = title;
+        this.icon = icon;
+    }
     public Aside(String path, String title, String icon, List<Children> children) {
         this.path = path;
         this.title = title;

@@ -4,4 +4,21 @@
 
 <mapper namespace="com.paul.dao.MenuDao">
 
+    <select id="findRole_idByUsername" parameterType="string" resultType="int">
+        SELECT id FROM t_user WHERE username = #{value}
+    </select>
+
+    <select id="findFirstMenuByRole_id" resultType="com.paul.pojo.Menu" parameterType="int">
+        SELECT * FROM t_menu WHERE id BETWEEN #{arg0} AND #{arg1} AND parentMenuId IS NULL
+    </select>
+
+
+    <select id="findMenu_idsByRole_id" parameterType="int" resultType="int">
+        SELECT menu_id FROM t_role_menu WHERE role_id = #{value}
+    </select>
+
+
+    <select id="findSecondMenuByFirstMenu_Id" parameterType="int" resultType="com.paul.pojo.Menu">
+        SELECT * FROM t_menu WHERE parentMenuId = #{value}
+    </select>
 </mapper>
