@@ -4,6 +4,8 @@ package com.paul.service;
 import com.paul.pojo.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -50,6 +52,15 @@ public class UserService implements UserDetailsService {
             }
             org.springframework.security.core.userdetails.User securityUser = new org.springframework.security.core.userdetails.User(username,"{noop}"+user.getPassword(),list);
             return securityUser;
+        }
+    }
+
+    public void test(){
+        SecurityContext context = SecurityContextHolder.getContext();
+        org.springframework.security.core.userdetails.User user = (org.springframework.security.core.userdetails.User) context.getAuthentication().getPrincipal();
+        for (GrantedAuthority authority : user.getAuthorities()) {
+            String authorityAuthority = authority.getAuthority();
+            System.out.println(authorityAuthority);
         }
     }
 }

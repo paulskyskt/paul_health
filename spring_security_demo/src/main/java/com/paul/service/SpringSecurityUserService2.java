@@ -57,6 +57,12 @@ public class SpringSecurityUserService2 implements UserDetailsService {
                 list.add(new SimpleGrantedAuthority("add"));//授权
             }
             org.springframework.security.core.userdetails.User securityUser = new org.springframework.security.core.userdetails.User(username,user.getPassword(),list);
+            System.out.println("------");
+            for (GrantedAuthority authority : securityUser.getAuthorities()) {
+                String authorityAuthority = authority.getAuthority();
+                System.out.println(authorityAuthority);
+            }
+
             return securityUser;
         }
     }

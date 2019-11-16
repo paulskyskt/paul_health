@@ -217,9 +217,23 @@
             ]
         },
         created(){
+            this.findAside();
             axios.post("/findUsername.do").then((res)=>{
                 this.username = res.data.data;
             });
+        },
+
+        methods:{
+            findAside(){
+                axios.get("role/findAside.do").then((res)=>{
+                    if(res.data.flag){
+                        this.menuList = this.data.data;
+                    }else {
+                        this.$message.error(res.data.message);
+                    }
+                })
+            },
+
         }
     });
 
