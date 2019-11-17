@@ -52,10 +52,12 @@ public class SpringSecurityUserService2 implements UserDetailsService {
             list.add(new SimpleGrantedAuthority("permission_A"));//授权
             list.add(new SimpleGrantedAuthority("permission_B"));
 
+            list.add(new SimpleGrantedAuthority("add"));//授权
+
             if(username.equals("admin")){
                 list.add(new SimpleGrantedAuthority("ROLE_ADMIN"));//授予角色
-                list.add(new SimpleGrantedAuthority("add"));//授权
             }
+
             org.springframework.security.core.userdetails.User securityUser = new org.springframework.security.core.userdetails.User(username,user.getPassword(),list);
             System.out.println("------");
             for (GrantedAuthority authority : securityUser.getAuthorities()) {

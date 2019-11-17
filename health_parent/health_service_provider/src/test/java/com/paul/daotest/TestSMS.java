@@ -3,10 +3,21 @@ package com.paul.daotest;
 import com.aliyuncs.exceptions.ClientException;
 import com.paul.utils.SMSUtils;
 import org.junit.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Date;
 
 public class TestSMS {
+
+    @Test
+    public void test3(){
+        BCryptPasswordEncoder bb = new BCryptPasswordEncoder();
+        String pwd = bb.encode("123");
+        String pwd1 = bb.encode("123");
+        System.out.println(pwd);
+        System.out.println(pwd1);
+
+    }
 
     @Test
     public void test2(){
