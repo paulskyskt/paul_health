@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.paul.dao.RoleDao">
+
     <select id="findByUserId" resultType="com.paul.pojo.Role" parameterType="int">
        SELECT * FROM t_role WHERE id IN (SELECT role_id FROM t_user_role WHERE user_id = #{id})
     </select>

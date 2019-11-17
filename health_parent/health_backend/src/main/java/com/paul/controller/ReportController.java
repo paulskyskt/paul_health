@@ -71,4 +71,16 @@ public class ReportController {
         return new Result(true,MessageConstant.QUERY_CHECKGROUP_SUCCESS,list);
 
     }
+
+
+    @RequestMapping("/getSetmealReport.do")
+    public Result getSetmealReport(){
+        List<Map<String,Object>> list = new ArrayList<>();
+
+
+
+
+
+        return new Result(true,MessageConstant.GET_SETMEAL_COUNT_REPORT_SUCCESS);
+    }
 }
