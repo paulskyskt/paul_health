@@ -16,6 +16,8 @@ import redis.clients.jedis.JedisPool;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 /**
  * @author Think
  */
@@ -73,5 +75,10 @@ public class SetmealServiceImpl implements SetmealService {
     @Override
     public Setmeal findById(Integer id) {
         return setmealDao.findById(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> findSetmealCount() {
+        return setmealDao.findSetmealCount();
     }
 }

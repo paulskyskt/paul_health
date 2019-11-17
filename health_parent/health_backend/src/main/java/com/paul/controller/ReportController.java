@@ -5,6 +5,7 @@ import com.paul.constant.MessageConstant;
 import com.paul.entity.Result;
 import com.paul.pojo.MapData;
 import com.paul.service.MemberService;
+import com.paul.service.SetmealService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,8 @@ public class ReportController {
 
     @Reference
     private MemberService memberService;
+    @Reference
+    private SetmealService setmealService;
 
     @RequestMapping("/getMemberReport.do")
     public Result getMemberReport(){
@@ -75,12 +78,30 @@ public class ReportController {
 
     @RequestMapping("/getSetmealReport.do")
     public Result getSetmealReport(){
-        List<Map<String,Object>> list = new ArrayList<>();
+        /*
+        {
+            "setmealNames": ["套餐1", "套餐2", "套餐3"],
+            "setmealCount": [
+                  {"name": "套餐1","value": 10},
+                  {"name": "套餐2","value": 30},
+                  {"name": "套餐3","value": 25}
+                ]
+        }
+        * */
+        HashMap<String, Object> map = new HashMap<>();
+        List<Map<String,Object>> list = setmealService.findSetmealCount();
+        map.put("setmealCount",list);
+
+        List<String> setmealNames = new ArrayList<>();
+
+        for (Map<String, Object> objectMap : list) {
+            String name = (String) objectMap.get("name");
+            setmealNames.add(name);
+        }
+
+        map.put("setmealNames",setmealNames);
 
 
-
-
-
-        return new Result(true,MessageConstant.GET_SETMEAL_COUNT_REPORT_SUCCESS);
+        return new Result(true,MessageConstant.GET_SETMEAL_COUNT_REPORT_SUCCESS,map);
     }
 }

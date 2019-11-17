@@ -5,6 +5,7 @@ import com.paul.entity.QueryPageBean;
 import com.paul.pojo.Setmeal;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SetmealService {
 
@@ -15,7 +16,10 @@ public interface SetmealService {
     List<Setmeal> findAll();
 
     Setmeal findById(Integer id);
+
+    List<Map<String, Object>> findSetmealCount();
 }
+
 
 
 

@@ -2,8 +2,10 @@
 <html style="height: 100%">
 <head>
     <meta charset="utf-8">
+    <script src="../js/vue.js"></script>
     <script src="../js/echarts.js"></script>
     <script src="../js/jquery.min.js"></script>
+    <script src="../js/axios-0.18.0.js"></script>
 </head>
 <body style="height: 100%; margin: 0">
 <div id="container" style="height: 100%"></div>
@@ -13,7 +15,7 @@
     var myChart = echarts.init(dom);
     var app = {};
     option = null;
-    axios.get("report/getSetmealReport.do").then((res)=>{
+    axios.get("/report/getSetmealReport.do").then((res)=>{
         myChart.setOption(option = {
             title : {
                 text: '套餐预约占比',
@@ -30,7 +32,7 @@
             },
             series : [
                 {
-                    name: '访问来源',
+                    name: '套餐预约占比',
                     type: 'pie',
                     radius : '55%',
                     center: ['50%', '60%'],
