@@ -18,7 +18,13 @@ public interface MemberDao {
     Integer findCountByAddress(String address);
 
     Integer findMemberCountByDate(String today);
+
+    Integer findMemberTotalCount();
+
+    Integer findMemberCountAfterDate(String thisWeekMonday);
 }
+
+
 
 
 

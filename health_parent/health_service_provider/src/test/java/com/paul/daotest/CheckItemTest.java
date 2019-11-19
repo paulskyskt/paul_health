@@ -44,6 +44,13 @@ public class CheckItemTest {
 
     @Autowired
     private MenuDao menuDao;
+    @Test
+    public void test22(){
+        Integer memberCountAfterDate =
+                memberDao.findMemberCountAfterDate("2019-11-17");
+        System.out.println(memberCountAfterDate);
+
+    }
 
     @Test
     public void test21(){

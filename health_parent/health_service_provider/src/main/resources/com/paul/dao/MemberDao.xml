@@ -37,5 +37,15 @@
         SELECT COUNT(*) FROM t_member WHERE regTime = #{value}
     </select>
 
+    <!--总会员数-->
+    <select id="findMemberTotalCount" resultType="int">
+        select count(id) from t_member
+    </select>
+
+    <!--根据日期统计会员数，统计指定日期之后的会员数-->
+    <select id="findMemberCountAfterDate" parameterType="string" resultType="int">
+        select count(id) from t_member where regTime &gt;= #{value}
+    </select>
+
 
 </mapper>
