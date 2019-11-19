@@ -47,10 +47,10 @@ public class CheckItemTest {
 
     @Test
     public void test21(){
+        Integer memberCountByDate = memberDao.findMemberCountByDate("2019-11-17");
+        System.out.println(memberCountByDate);
 
-        List<Menu> secondMenus = menuDao.findSecondMenuByFirstMenu_Id(1);
-        Object json = JSON.toJSON(secondMenus);
-        System.out.println(json);
+
     }
 
     @Test

@@ -21,4 +21,7 @@
     <select id="findSecondMenuByFirstMenu_Id" parameterType="int" resultType="com.paul.pojo.Menu">
         SELECT * FROM t_menu WHERE parentMenuId = #{value}
     </select>
+
+
+
 </mapper>

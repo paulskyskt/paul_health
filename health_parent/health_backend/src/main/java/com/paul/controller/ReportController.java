@@ -5,6 +5,7 @@ import com.paul.constant.MessageConstant;
 import com.paul.entity.Result;
 import com.paul.pojo.MapData;
 import com.paul.service.MemberService;
+import com.paul.service.ReportService;
 import com.paul.service.SetmealService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,9 @@ public class ReportController {
     private MemberService memberService;
     @Reference
     private SetmealService setmealService;
+
+    @Reference
+    private ReportService reportService;
 
     @RequestMapping("/getMemberReport.do")
     public Result getMemberReport(){
@@ -104,4 +108,16 @@ public class ReportController {
 
         return new Result(true,MessageConstant.GET_SETMEAL_COUNT_REPORT_SUCCESS,map);
     }
+
+    @RequestMapping("/getBusinessReportData.do")
+    public Result getBusinessReportData(){
+        try{
+            Map<String,Object>result=reportService.getBusinessReport();
+            return new Result(true,MessageConstant.GET_BUSINESS_REPORT_SUCCESS,result);
+        }
+        catch(Exception e){e.printStackTrace();
+        return new Result(true,MessageConstant.GET_BUSINESS_REPORT_FAIL);}
+    }
+
+
 }

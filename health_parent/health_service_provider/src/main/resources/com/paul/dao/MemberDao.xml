@@ -31,4 +31,11 @@
     <select id="findCountByAddress" resultType="int" parameterType="string">
         SELECT COUNT(*) FROM t_member WHERE address = #{address}
     </select>
+
+    <!--本日新增会员-->
+    <select id="findMemberCountByDate" parameterType="string" resultType="int">
+        SELECT COUNT(*) FROM t_member WHERE regTime = #{value}
+    </select>
+
+
 </mapper>

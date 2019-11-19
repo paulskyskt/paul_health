@@ -16,7 +16,10 @@ public interface MemberDao {
     List<String> findAllAddress();
 
     Integer findCountByAddress(String address);
+
+    Integer findMemberCountByDate(String today);
 }
+
 
 
 
