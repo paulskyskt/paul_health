@@ -67,7 +67,7 @@ public class LogAop {
         //访问的类
         executionClass = jp.getTarget().getClass();
         //把本类置 和日志controller 置为空
-        if ( executionClass == LogAop.class || executionClass == SysLogController.class) {
+        if ( executionClass == LogAop.class || executionClass == SysLogController.class ) {
             executionClass = null;
         }
         //获取方法的参数
@@ -76,7 +76,7 @@ public class LogAop {
         String methodName = jp.getSignature().getName();
         //判断executionClass为空不
 
-        if(executionClass != null){
+        if ( executionClass != null && executionMethod != null ) {
             //判断获取无参方法/有参方法
             if ( args == null || args.length == 0 ) {
                 //访问的方法
@@ -135,7 +135,7 @@ public class LogAop {
             }
         }
 
-        if(executionClass != null){
+        if ( executionClass != null & executionMethod != null ) {
             //封装成SysLog对象
             SysLog sysLog = new SysLog();
             sysLog.setExecutionTime(executionTime);

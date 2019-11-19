@@ -23,12 +23,12 @@ public class MenuServiceImpl implements MenuService {
         List<Integer> menu_ids = menuDao.findMenu_idsByRole_id(role_id);
 
         //获取首位
-        Integer f = menu_ids.get(0);
+        Integer first = menu_ids.get(0);
         //获取末位
-        Integer l = menu_ids.get(menu_ids.size() - 1);
+        Integer last = menu_ids.get(menu_ids.size() - 1);
 
         //根据菜单id范围 和parentMenuId 为空查询出一级菜单
-        List<Menu> firstMenuList = menuDao.findFirstMenuByRole_id(f,l);
+        List<Menu> firstMenuList = menuDao.findFirstMenuByRole_id(first,last);
 
 
         //根据一级菜单parentMenuId查询出对应子菜单
